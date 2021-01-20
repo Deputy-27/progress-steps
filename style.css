@@ -1,0 +1,101 @@
+/*custome properties*/
+:root { /*variable*/
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0;
+}
+
+/*global properties*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f7fb;
+    font-family: "Rockwell Extra Bold", sans-serif;
+    display: flex; /*for centering elements*/
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative; /*container inside will be absolute*/
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before { /*grey line*/
+    content: '';
+    background-color: var(--line-border-empty); /*passing variable*/
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+}
+
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px; /*blue line height*/
+    width: 0%; /*blue line width*/
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+.circle {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    /*centering number in a middle of circle*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.4s ease;
+}
+
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+
+.btn {
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active {
+    transform: scale(0.95); /*shrinks or grows when active*/
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+}
